@@ -40,6 +40,8 @@ contract Token is Context, IERC20, IERC20Metadata {
         _name = "Token Name";
         _symbol = "TKN";
         _totalSupply = 1 * 10**18;
+        _balances[_msgSender()] = _totalSupply;
+        emit Transfer(address(0), _msgSender(), _totalSupply);
     }
     function name() public view virtual override returns (string memory) {
         return _name;
